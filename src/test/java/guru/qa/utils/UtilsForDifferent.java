@@ -18,7 +18,10 @@ public class UtilsForDifferent {
                     .filter(Files::isRegularFile)
                     .map(Path::getFileName)
                     .map(Path::toString)
+                    .filter(e -> !e.startsWith("multi"))
                     .collect(Collectors.toList());
+
+
         } catch (IOException e) {
             throw new RuntimeException("Could not read files for path " + path);
         }

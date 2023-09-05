@@ -15,6 +15,19 @@ public class FindFileInResources {
                     .filter(Files::isRegularFile)
                     .map(Path::getFileName)
                     .map(Path::toString)
+                    .filter(e -> !e.startsWith("multi"))
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            throw new RuntimeException("Could not read files for path " + path);
+        }
+    }
+
+    public List<String> removeArchiveFileFromList(Path path) {
+        try (Stream<Path> walk = Files.walk(path)) {
+            return walk
+                    .filter(Files::isRegularFile)
+                    .map(Path::getFileName)
+                    .map(Path::toString)
                     .collect(Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException("Could not read files for path " + path);
