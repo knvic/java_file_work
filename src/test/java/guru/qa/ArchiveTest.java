@@ -1,6 +1,6 @@
 package guru.qa;
 
-import guru.qa.utils.CheckFile;
+import guru.qa.interfaces.CheckFile;
 import guru.qa.utils.FindFileInResources;
 import guru.qa.utils.TypeExt;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-public class ArchiveTest implements CheckFile {
+public class ArchiveTest  {
 
     ClassLoader cl =ArchiveTest.class.getClassLoader();
     FindFileInResources findFileInResources=new FindFileInResources();
@@ -64,10 +64,7 @@ public class ArchiveTest implements CheckFile {
 
 
 
-    @Override
-    public File heckFile(TypeExt ext) {
-        return null;
-    }
+
 }
 
 
