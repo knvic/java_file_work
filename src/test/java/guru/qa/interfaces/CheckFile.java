@@ -11,7 +11,7 @@ public interface CheckFile {
 
     static String zipTest(ClassLoader cl, TypeExt ext) throws Exception {
         String namefile = null;
-        File destDir = new File("src/test/resources/folderUnzip");
+        File destDir = new File("src/test/resources/unzipTest");
         try (InputStream stream = cl.getResourceAsStream("multiCompressed.zip");
              ZipInputStream zis = new ZipInputStream(stream)) {
             byte[] buffer = new byte[1024];

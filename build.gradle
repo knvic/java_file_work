@@ -21,8 +21,11 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
     testImplementation('com.codeborne:selenide:6.12.3')
     testImplementation('org.slf4j:slf4j-simple:2.0.5')
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
 
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
@@ -32,7 +35,10 @@ dependencies {
     testImplementation 'com.codeborne:xls-test:1.4.3'
     testImplementation 'com.opencsv:opencsv:5.7.1'
     testImplementation 'com.google.code.gson:gson:2.10.1'
+
+
 }
+
 
 test {
     useJUnitPlatform()
