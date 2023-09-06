@@ -3,7 +3,7 @@ package guru.qa.utils;
 public enum TypeExt {
     CSV(".csv"),
     PDF(".pdf"),
-    TXT(",txt"),
+    TXT(".txt"),
     XLSX(".xlsx");
 
 

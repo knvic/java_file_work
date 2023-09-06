@@ -10,7 +10,8 @@ public interface CheckFile {
 
 
     static String zipTest(ClassLoader cl, TypeExt ext) throws Exception {
-        File destDir = new File("src/test/resources/unzipTest");
+        String namefile = null;
+        File destDir = new File("src/test/resources/folderUnzip");
         try (InputStream stream = cl.getResourceAsStream("multiCompressed.zip");
              ZipInputStream zis = new ZipInputStream(stream)) {
             byte[] buffer = new byte[1024];
@@ -18,6 +19,7 @@ public interface CheckFile {
             int len;
             while ((entry = zis.getNextEntry()) != null) {
                 if( entry.getName().contains(ext.getfileExt())) {
+                    namefile=entry.getName();
                     File newFile = new File(destDir, entry.getName());
                     FileOutputStream fos = new FileOutputStream(newFile);
                     while ((len = zis.read(buffer)) > 0) {
@@ -26,12 +28,12 @@ public interface CheckFile {
                     fos.close();
                 }
             }
-            return null;
+            return namefile;
         }
     }
 
 
-    public void checkFile(TypeExt typeExt);
+    public void checkFile(String name) throws Exception;
 
 
 

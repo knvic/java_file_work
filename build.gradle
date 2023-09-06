@@ -24,8 +24,14 @@ dependencies {
     testImplementation('com.codeborne:selenide:6.12.3')
     testImplementation('org.slf4j:slf4j-simple:2.0.5')
 
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    testImplementation 'com.codeborne:pdf-test:1.5.0'
+    testImplementation 'com.codeborne:xls-test:1.4.3'
+    testImplementation 'com.opencsv:opencsv:5.7.1'
+    testImplementation 'com.google.code.gson:gson:2.10.1'
 }
 
 test {
