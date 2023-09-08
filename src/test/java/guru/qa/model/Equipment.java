@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package guru.qa.model;
 
 /*
 {
@@ -10,6 +10,7 @@ package guru.qa.utils;
         }
 */
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,10 @@ import java.util.List;
     private String voltage;
     private List<Measurements> list;
 
-
-    }
+       public Equipment(String name, String type, String voltage, List<Measurements> list) {
+           this.name = name;
+           this.type = type;
+           this.voltage = voltage;
+           this.list = list;
+       }
+   }
