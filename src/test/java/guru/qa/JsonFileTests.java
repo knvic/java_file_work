@@ -3,11 +3,11 @@ package guru.qa;
 import com.google.gson.*;
 import guru.qa.model.Equipment;
 import guru.qa.model.Measurements;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-import java.io.FileWriter;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +20,7 @@ public class JsonFileTests {
         "measurements": ["diskret", "analog", "remote"]
         }
 */
+ClassLoader cl = JsonFileTests.class.getClassLoader();
 
     @Test
     void jsonFileTests() {
@@ -74,6 +75,41 @@ public class JsonFileTests {
 
         System.out.println(equipments);
 
+    }
+
+
+    @Test
+    void readFromFileJsonTest() throws Exception {
+        try (InputStream stream = cl.getResourceAsStream("equipments.json");
+             Reader reader = new InputStreamReader(stream)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            //JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
+            //JsonArray jsonArray=gson.fromJson(reader,JsonArray.class);
+            JsonArray jsonArray=gson.fromJson(reader,JsonArray.class);
+          /*  for (int i=0; i<jsonArray.size()+1;i++){
+
+            }*/
+            /*for (JsonElement jo:jsonArray) {
+                System.out.println(jo.getAsJsonObject().get("name").getAsString());
+                Assertions.assertEquals("В-110", jo.getAsJsonObject().get("name").getAsString());
+
+            }*/
+            Assertions.assertEquals("В-110", jsonArray.get(0).getAsJsonObject().get("name").getAsString());
+            Assertions.assertEquals("Analog", jsonArray.get(0).getAsJsonObject().get("list").getAsJsonArray().get(0).getAsJsonObject().get("type").getAsString());
+
+            System.out.println(jsonArray.get(0).getAsJsonObject().get("list").getAsJsonArray().get(0).getAsJsonObject().get("type").getAsString());
+            System.out.println(jsonArray.get(0).getAsJsonObject().get("list").getAsJsonArray().get(0).getAsJsonObject().get("name").getAsString());
+        //    Assertions.assertEquals("В-110", jsonObject.get("name").getAsString());
+            /*Assertions.assertEquals("S", jsonObject.get("gloss_div")
+                    .getAsJsonObject()
+                    .get("title")
+                    .getAsString());
+
+            Assertions.assertTrue(jsonObject.get("gloss_div")
+                    .getAsJsonObject()
+                    .get("flag")
+                    .getAsBoolean());*/
+        }
     }
 
 }
