@@ -21,11 +21,13 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.26'
     testImplementation('com.codeborne:selenide:6.12.3')
     testImplementation('org.slf4j:slf4j-simple:2.0.5')
-// https://mvnrepository.com/artifact/org.projectlombok/lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.1'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
 
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
@@ -35,6 +37,7 @@ dependencies {
     testImplementation 'com.codeborne:xls-test:1.4.3'
     testImplementation 'com.opencsv:opencsv:5.7.1'
     testImplementation 'com.google.code.gson:gson:2.10.1'
+
 
 
 }

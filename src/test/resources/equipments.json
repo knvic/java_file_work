@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Â-110",
+    "type": "breacker",
+    "voltage": "110",
+    "list": [
+      {
+        "type": "Analog",
+        "name": "Power"
+      },
+      {
+        "type": "Analog",
+        "name": "Voltage"
+      },
+      {
+        "type": "Discret",
+        "name": "Remote"
+      }
+    ]
+  },
+  {
+    "name": "LR-110-I",
+    "type": "Disconnector",
+    "voltage": "110",
+    "list": [
+      {
+        "type": "Analog",
+        "name": "Current"
+      },
+      {
+        "type": "Discret",
+        "name": "StateEquipment"
+      }
+    ]
+  }
+]

@@ -1,9 +1,4 @@
-package guru.qa;
-
-import guru.qa.interfaces.CheckFile;
-import guru.qa.utils.FindFileInResources;
-import guru.qa.utils.TypeExt;
-import org.junit.jupiter.api.Test;
+package guru.qa.utils;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -11,25 +6,19 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-public class ArchiveTest  {
+public class ArchiveWork {
 
-    ClassLoader cl =ArchiveTest.class.getClassLoader();
+    ClassLoader cl = ArchiveWork.class.getClassLoader();
     FindFileInResources findFileInResources=new FindFileInResources();
 
     final Path path = Paths.get("src/test/resources");
 
 
-
-
-    @Test
     void addFilesFromResourcesToArchive() throws IOException {
         List<String> srcFiles = findFileInResources.getListWithNamesOfFiles(path);
-        System.out.println("++++++++++++++++++++++++" +srcFiles);
         Stream.of(srcFiles).forEach(System.out::println);
-
         try( FileOutputStream fos = new FileOutputStream("src/test/resources/multiCompressed.zip");
         ZipOutputStream zipOut = new ZipOutputStream(fos)){
 
@@ -46,24 +35,6 @@ public class ArchiveTest  {
             }}
         }}
     }
-
-    @Test
-    void zipTest() throws Exception {
-        try (InputStream stream = cl.getResourceAsStream("multiCompressed.zip");
-             ZipInputStream zis = new ZipInputStream(stream)) {
-
-            ZipEntry entry;
-            while ((entry = zis.getNextEntry()) != null) {
-                final String name = entry.getName();
-                System.out.println("entry = "+name);
-                //Assertions.assertTrue(name.contains("sample.txt"));
-            }
-        }
-    }
-
-
-
-
 
 }
 

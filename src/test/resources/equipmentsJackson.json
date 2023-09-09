@@ -1,0 +1,3 @@
+{
+  "buffer" : "[ {\r\n  \"name\" : \"Â-110\",\r\n  \"type\" : \"breacker\",\r\n  \"voltage\" : \"110\",\r\n  \"list\" : [ {\r\n    \"type\" : \"Analog\",\r\n    \"name\" : \"Power\"\r\n  }, {\r\n    \"type\" : \"Analog\",\r\n    \"name\" : \"Voltage\"\r\n  }, {\r\n    \"type\" : \"Discret\",\r\n    \"name\" : \"Remote\"\r\n  } ]\r\n}, {\r\n  \"name\" : \"LR-110-I\",\r\n  \"type\" : \"Disconnector\",\r\n  \"voltage\" : \"110\",\r\n  \"list\" : [ {\r\n    \"type\" : \"Analog\",\r\n    \"name\" : \"Current\"\r\n  }, {\r\n    \"type\" : \"Discret\",\r\n    \"name\" : \"StateEquipment\"\r\n  } ]\r\n} ]"
+}

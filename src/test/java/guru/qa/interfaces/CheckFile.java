@@ -33,7 +33,7 @@ public interface CheckFile {
     }
 
 
-    public void checkFile(String name) throws Exception;
+    void checkFile(String name) throws Exception;
 
 
 
