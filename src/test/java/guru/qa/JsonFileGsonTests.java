@@ -1,7 +1,7 @@
 package guru.qa;
 
 import com.google.gson.JsonArray;
-import guru.qa.utils.AuxiliaryJsonGson;
+import guru.qa.auxiliary.AuxiliaryJsonGson;
 import guru.qa.model.Equipment;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

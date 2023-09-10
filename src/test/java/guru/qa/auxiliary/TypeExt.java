@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package guru.qa.auxiliary;
 
 public enum TypeExt {
     CSV(".csv"),

@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package guru.qa.auxiliary;
 
 import org.apache.commons.io.FileUtils;
 

@@ -1,7 +1,7 @@
 package guru.qa;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import guru.qa.utils.AuxiliaryJsonJackson;
+import guru.qa.auxiliary.AuxiliaryJsonJackson;
 import guru.qa.model.Equipment;
 
 import org.junit.jupiter.api.Assertions;

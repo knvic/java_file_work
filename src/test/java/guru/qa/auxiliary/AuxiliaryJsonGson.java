@@ -1,4 +1,4 @@
-package guru.qa.utils;
+package guru.qa.auxiliary;
 
 import com.google.gson.*;
 import guru.qa.JsonFileJacksonTests;
