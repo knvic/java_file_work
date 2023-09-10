@@ -2,8 +2,12 @@ package guru.qa.model;
 
 
 import com.google.gson.annotations.SerializedName;
-
-
+/**
+{
+        "type" : "Analog",
+        "name" : "Power"
+        }
+**/
 
 public class Measurements {
     @SerializedName("type")

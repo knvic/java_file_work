@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import guru.qa.interfaces.WorkWithJson;
 import guru.qa.model.Equipment;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class BaseJsonTest {
 
-
+    @DisplayName("Создаем json файл с наполнением для работы остальных тестов")
     @BeforeAll
     static void createFileJson() throws IOException {
         WorkWithJson.createEquipments();

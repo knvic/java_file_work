@@ -1,11 +1,8 @@
 package guru.qa.interfaces;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import guru.qa.model.Equipment;
 import guru.qa.model.Measurements;
-import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,8 +29,8 @@ public interface WorkWithJson {
 
     Equipment createJavaObjectFromJsonString() throws JsonProcessingException;
 
-    JsonArray  readFromJsonFileTest() throws IOException;
-
+    //JsonArray  readFromJsonFileTest() throws IOException;
+    List<Object>  readFromJsonFileTest() throws IOException;
 
 
 }

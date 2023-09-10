@@ -1,20 +1,15 @@
 package guru.qa;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.gson.*;
-import guru.qa.PageObject.PageObjectJsonJackson;
+import guru.qa.PageObjectJsonTests.PageObjectJsonJackson;
 import guru.qa.model.Equipment;
-import guru.qa.model.Measurements;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class JsonFileJacksonTests {
 
@@ -23,7 +18,8 @@ PageObjectJsonJackson pageObjectJsonJackson=new PageObjectJsonJackson();
 
 
     @Test
-    public void createJavaObjectFromJsonStringTest() throws JsonProcessingException {
+    @DisplayName("Создаем Java объект из строки Json и проверяем содержимое Java объекта с помоью методов класса")
+      public void createJavaObjectFromJsonStringTest() throws JsonProcessingException {
         Equipment equipment = pageObjectJsonJackson.createJavaObjectFromJsonString();
         Assertions.assertEquals("breacker", equipment.getType());
     }
@@ -31,8 +27,9 @@ PageObjectJsonJackson pageObjectJsonJackson=new PageObjectJsonJackson();
 
 
     @Test
+    @DisplayName("Создаем json файл из объекта(на основе класса Java c массивом внутри." +
+            "Проверяем наличие созданного файла")
     void createJsonWithJacsonLibrary() throws IOException {
-
         pageObjectJsonJackson.createJsonFileFromJavaObject();
         Assertions.assertTrue(new File("src/test/resources/equipmentsJackson.json").exists());
 

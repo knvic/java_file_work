@@ -1,12 +1,8 @@
-package guru.qa.PageObject;
+package guru.qa.PageObjectJsonTests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import guru.qa.JsonFileJacksonTests;
 import guru.qa.interfaces.WorkWithJson;
 import guru.qa.model.Equipment;
@@ -19,18 +15,15 @@ public class PageObjectJsonJackson implements WorkWithJson {
 
     @Override
     public void createJsonFileFromJavaObject() throws IOException {
-
-
         List<Equipment> equipments = WorkWithJson.createEquipments();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         StringWriter stringEmp = new StringWriter();
         objectMapper.writeValue(stringEmp, equipments);
-        System.out.println("Employee JSON is\n" + stringEmp.toString());
 
         try (Writer writer = new FileWriter("src/test/resources/equipmentsJackson.json")) {
             objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true).writeValue(writer, stringEmp);
-            //writer.flush();
+
 
         }
     }
@@ -47,7 +40,8 @@ public class PageObjectJsonJackson implements WorkWithJson {
     }
 
     @Override
-    public JsonArray readFromJsonFileTest() throws IOException {
+    public List<Object> readFromJsonFileTest() throws IOException {
+        //TODO
         return null;
     }
 
