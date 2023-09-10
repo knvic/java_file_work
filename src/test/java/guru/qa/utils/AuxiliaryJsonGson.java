@@ -1,4 +1,4 @@
-package guru.qa.PageObjectJsonTests;
+package guru.qa.utils;
 
 import com.google.gson.*;
 import guru.qa.JsonFileJacksonTests;
@@ -8,7 +8,7 @@ import guru.qa.model.Equipment;
 import java.io.*;
 import java.util.List;
 
-public class PageObjectJsonGson implements WorkWithJson {
+public class AuxiliaryJsonGson implements WorkWithJson {
     ClassLoader cl = JsonFileJacksonTests.class.getClassLoader();
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

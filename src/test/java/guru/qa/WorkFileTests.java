@@ -3,7 +3,7 @@ package guru.qa;
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
-import guru.qa.PageObjectUnZipFileCheckTests.PageObjectUnZipFileCheckTests;
+import guru.qa.utils.AuxiliaryUnZipFileCheckTests;
 import guru.qa.utils.TypeExt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +17,7 @@ import java.util.List;
 public class WorkFileTests {
     ClassLoader cl = WorkFileTests.class.getClassLoader();
 
-    PageObjectUnZipFileCheckTests pageObjectUnZipFileCheckTests = new PageObjectUnZipFileCheckTests();
+    AuxiliaryUnZipFileCheckTests auxiliaryUnZipFileCheckTests = new AuxiliaryUnZipFileCheckTests();
 
 
 
@@ -31,7 +31,7 @@ public class WorkFileTests {
     @DisplayName("Ищем в архиве CSV файл, получаем его имя, извлекаем из архива" +
             "в папку unzip и проверяем содержимое.")
     void csvFileTest() throws Exception {
-        String name = PageObjectUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.CSV);
+        String name = AuxiliaryUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.CSV);
         try (InputStream stream = cl.getResourceAsStream(name);
              Reader reader = new InputStreamReader(stream)) {
             CSVReader csvReader = new CSVReader(reader);
@@ -46,7 +46,7 @@ public class WorkFileTests {
     @DisplayName("Ищем в архиве PDF файл, получаем его имя, извлекаем из архива" +
             "в папку unzip и проверяем содержимое.")
     void pdfFileTest() throws Exception {
-        String name = PageObjectUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.PDF);
+        String name = AuxiliaryUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.PDF);
         try (InputStream stream = cl.getResourceAsStream(name)) {
             PDF pdf = new PDF(stream);
             Assertions.assertEquals("Упражнения.", pdf.title);
@@ -58,7 +58,7 @@ public class WorkFileTests {
     @DisplayName("Ищем в архиве TXT файл, получаем его имя, извлекаем из архива" +
             "в папку unzip и проверяем содержимое.")
     void txtFileTest() throws Exception {
-        String name = PageObjectUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.TXT);
+        String name = AuxiliaryUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.TXT);
             try (InputStream stream = cl.getResourceAsStream(name)) {
             byte[] bytes = stream.readAllBytes();
             String content = new String(bytes, StandardCharsets.UTF_8);
@@ -70,7 +70,7 @@ public class WorkFileTests {
     @DisplayName("Ищем в архиве XLSX файл, получаем его имя, извлекаем из архива" +
             "в папку unzip и проверяем содержимое.")
     void xlsxFileTest() throws Exception {
-        String name = PageObjectUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.XLSX);
+        String name = AuxiliaryUnZipFileCheckTests.getFileNameSelectedFileExtensionFromArchive(cl, TypeExt.XLSX);
         try (InputStream stream = cl.getResourceAsStream(name)) {
             XLS xls = new XLS(stream);
 
@@ -86,8 +86,8 @@ public class WorkFileTests {
     @DisplayName("Удаляем файлы из папки unzipTest. Создаем архив и добавляем файлы из папки resouces." +
             "Проверяем наличие созданного файла.")
     void addFilesFromResourcesToArchiveTest() throws IOException {
-        pageObjectUnZipFileCheckTests.removeFilesFromUnZipDirectory();
-        pageObjectUnZipFileCheckTests.addFilesFromResourcesToArchive("src/test/resources/multiCompressed.zip");
+        auxiliaryUnZipFileCheckTests.removeFilesFromUnZipDirectory();
+        auxiliaryUnZipFileCheckTests.addFilesFromResourcesToArchive("src/test/resources/multiCompressed.zip");
         Assertions.assertTrue(new File("src/test/resources/multiCompressed.zip").exists());
 
     }

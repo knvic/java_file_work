@@ -1,7 +1,7 @@
 package guru.qa;
 
 import com.google.gson.JsonArray;
-import guru.qa.PageObjectJsonTests.PageObjectJsonGson;
+import guru.qa.utils.AuxiliaryJsonGson;
 import guru.qa.model.Equipment;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -12,13 +12,13 @@ import java.util.List;
 
 public class JsonFileGsonTests extends BaseJsonTest {
 
-    PageObjectJsonGson pageObjectJsonGson = new PageObjectJsonGson();
+    AuxiliaryJsonGson auxiliaryJsonGson = new AuxiliaryJsonGson();
 
     @Test
     @DisplayName("Создаем json файл из объекта(на основе класса Java c массивом внутри." +
             "Проверяем наличие созданного файла")
     void createJsonFileFromJavaObjectTest() throws IOException {
-        pageObjectJsonGson.createJsonFileFromJavaObject();
+        auxiliaryJsonGson.createJsonFileFromJavaObject();
         Assertions.assertTrue(new File("src/test/resources/equipments.json").exists());
     }
 
@@ -27,7 +27,7 @@ public class JsonFileGsonTests extends BaseJsonTest {
             "Получаем из имплементации интерфейса как Object Java" +
             "и приводим нужному дла Gson объекту JsonArray")
     void readAndCheckContentsJsonFile() throws IOException {
-        List<Object> result= pageObjectJsonGson.readFromJsonFileTest();
+        List<Object> result= auxiliaryJsonGson.readFromJsonFileTest();
         JsonArray jsonArray=(JsonArray)result.get(0);
            Assertions.assertEquals("В-110", jsonArray.get(0)
                 .getAsJsonObject()
@@ -48,7 +48,7 @@ public class JsonFileGsonTests extends BaseJsonTest {
     @Test
     @DisplayName("Создаем Java объект из строки Json и проверяем содержимое Java объекта с помоью методов класса")
     public void createJavaObjectFromJsonStringTest() {
-        Equipment equipment = pageObjectJsonGson.createJavaObjectFromJsonString();
+        Equipment equipment = auxiliaryJsonGson.createJavaObjectFromJsonString();
         Assertions.assertEquals("breacker", equipment.getType());
     }
 

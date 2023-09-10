@@ -1,4 +1,4 @@
-package guru.qa.PageObjectJsonTests;
+package guru.qa.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +10,7 @@ import guru.qa.model.Equipment;
 import java.io.*;
 import java.util.List;
 
-public class PageObjectJsonJackson implements WorkWithJson {
+public class AuxiliaryJsonJackson implements WorkWithJson {
     ClassLoader cl = JsonFileJacksonTests.class.getClassLoader();
 
     @Override

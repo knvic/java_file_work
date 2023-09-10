@@ -1,6 +1,5 @@
-package guru.qa.PageObjectUnZipFileCheckTests;
+package guru.qa.utils;
 
-import guru.qa.utils.TypeExt;
 import org.apache.commons.io.FileUtils;
 
 
@@ -18,9 +17,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-public class PageObjectUnZipFileCheckTests {
+public class AuxiliaryUnZipFileCheckTests {
 
-    ClassLoader cl = PageObjectUnZipFileCheckTests.class.getClassLoader();
+    ClassLoader cl = AuxiliaryUnZipFileCheckTests.class.getClassLoader();
     final Path path = Paths.get("src/test/resources");
 
 

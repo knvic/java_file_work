@@ -1,7 +1,7 @@
 package guru.qa;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import guru.qa.PageObjectJsonTests.PageObjectJsonJackson;
+import guru.qa.utils.AuxiliaryJsonJackson;
 import guru.qa.model.Equipment;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,13 +14,13 @@ import java.io.*;
 public class JsonFileJacksonTests {
 
     ClassLoader cl = JsonFileJacksonTests.class.getClassLoader();
-PageObjectJsonJackson pageObjectJsonJackson=new PageObjectJsonJackson();
+AuxiliaryJsonJackson auxiliaryJsonJackson =new AuxiliaryJsonJackson();
 
 
     @Test
     @DisplayName("Создаем Java объект из строки Json и проверяем содержимое Java объекта с помоью методов класса")
       public void createJavaObjectFromJsonStringTest() throws JsonProcessingException {
-        Equipment equipment = pageObjectJsonJackson.createJavaObjectFromJsonString();
+        Equipment equipment = auxiliaryJsonJackson.createJavaObjectFromJsonString();
         Assertions.assertEquals("breacker", equipment.getType());
     }
 
@@ -30,7 +30,7 @@ PageObjectJsonJackson pageObjectJsonJackson=new PageObjectJsonJackson();
     @DisplayName("Создаем json файл из объекта(на основе класса Java c массивом внутри." +
             "Проверяем наличие созданного файла")
     void createJsonWithJacsonLibrary() throws IOException {
-        pageObjectJsonJackson.createJsonFileFromJavaObject();
+        auxiliaryJsonJackson.createJsonFileFromJavaObject();
         Assertions.assertTrue(new File("src/test/resources/equipmentsJackson.json").exists());
 
 
